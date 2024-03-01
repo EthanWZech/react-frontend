@@ -58,7 +58,7 @@ const LoginPage: React.FC = () => {
           <LoadingButton type="submit" variant="contained" loading={loading} sx={{ mt: 4, mb: 3 }}>Login</LoadingButton>
           <Grid container>
               <Grid item xs>
-                <Link href="/forgot-password" variant="body2">
+                <Link href="/forgotpassword" variant="body2">
                   Forgot password?
                 </Link>
               </Grid>

@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const USER_API_URL = "http://localhost:9000/user/";
+const PW_API_URL = "http://localhost:9000/api/";
 // const USER_API_URL = "https://9429d5b9-a4ce-43d8-bf6b-637cc223febe.mock.pstmn.io/";
 
 const register = (username: string, email: string, password: string) => {
@@ -10,6 +11,21 @@ const register = (username: string, email: string, password: string) => {
     password,
   });
 };
+
+const forgotPassword = (email: string) => {
+  return axios
+    .post(PW_API_URL + "password-reset-link", {
+      email,
+    })
+};
+
+const newPassword = (resetToken : string, password : string) => {
+  return axios
+  .post(PW_API_URL + "password-reset/confirm", {
+    resetToken,
+    password
+  })
+}
 
 const login = (username: string, password: string) => {
   return axios
@@ -60,6 +76,8 @@ const fakeAuthProvider = {
 
   const AuthService = {
     register,
+    forgotPassword,
+    newPassword,
     login,
     logout,
     getCurrentUser,
